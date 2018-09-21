@@ -10,8 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("First Matrix: ");
             int i, j, k;
+            Console.WriteLine("First Matrix: ");
             Console.Write("No of Rows: ");
             int r1 = int.Parse(Console.ReadLine());
             Console.Write("No of Columns: ");
