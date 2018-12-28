@@ -76,7 +76,6 @@ namespace ConsoleApplication1
                 }
             }
 
-            Console.WriteLine("Process On Matrix");
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
