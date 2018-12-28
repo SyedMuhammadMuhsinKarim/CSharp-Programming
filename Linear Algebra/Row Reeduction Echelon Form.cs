@@ -24,6 +24,15 @@ namespace ConsoleApplication1
 
         static void pivotFinding(double [,] matrix, int nCol, int row, int col) 
         {
+            double[,] result = new double[row, col];
+            for (int r = 0; r < row; r++)
+            {
+                for (int c = 0; c < col; c++)
+                {
+                    result[r, c] = matrix[r, c];
+                }
+            }
+
             int i = 0;
             int j = nCol;
             while(i < row) {
@@ -31,35 +40,27 @@ namespace ConsoleApplication1
                    i++;
                 }
                else if (matrix[i, j] != 0) {
-                   if(matrix[i,j] != 1 && i != col) {
-                       matrix[i, j] /= matrix[i, j];
-                        double temp = matrix[j, j];
-                        matrix[j, j] = matrix[i, j];
-                        matrix[i, j] = temp;
+                   if(matrix[i,j] != 1 && (i != col || i == col)) {
+                       for(int k = 0; k < col; k++) {
+                            result[j, k] = matrix[j, k]/matrix[nCol,nCol];
+                       }
                         i++;
                         break;
-                   } 
-                   else if(matrix[i,j] != 1 && i == col) {
-                        matrix[i, j] /= matrix[i, j];
-                        i++;
-                        break;
-                    }
+                   }
                     else if (matrix[i, j] == 1) {
                         break;
                     }
                } 
             }
 
-
-            Console.WriteLine("Pivot Resolve");
-            for (int r = 0; r < row; r++) {
-                for (int c = 0; c < col; c++) {
-                    Console.Write(matrix[r, c] + "        ");
+            for (int r = 0; r < row; r++)
+            {
+                for (int c = 0; c < col; c++)
+                {
+                    matrix[r, c] = result[r, c];
                 }
-                Console.WriteLine();
             }
 
-            //Console.WriteLine(nCol);
             Echelon(matrix, nCol, col, row);
         }
 
@@ -73,7 +74,6 @@ namespace ConsoleApplication1
                 {
                     result[r, c] = matrix[r, c];
                 }
-                Console.WriteLine();
             }
 
             Console.WriteLine("Process On Matrix");
@@ -84,12 +84,11 @@ namespace ConsoleApplication1
                     if (i != nCol)
                     {
                         result[i, j] = matrix[i, j] - (matrix[nCol, j] * matrix[i, nCol]);
-                        //Console.WriteLine("[{0},{1}] = [{0},{1}] - ([{2},{1}] * [{0},{2}]) = {3}", i, j, nCol, result[i, j]);
                     }
                 }
             }
 
-            Console.WriteLine("Get Matrix After Process");
+            Console.WriteLine("Process: {0}", nCol + 1);
             for (int r = 0; r < row; r++)
             {
                 for (int c = 0; c < col; c++)
