@@ -1,8 +1,7 @@
 static void NodeConnection(int[,] a)
         {
-            int r = 6;
+            int r = a.GetLength(0);
             int c = a.GetLength(1);
-            int[] arr = new int[r];
 
             int i = 0;
             while (i < r)
@@ -14,7 +13,6 @@ static void NodeConnection(int[,] a)
                     {
                         count++;
                         Console.WriteLine("Node " + i + " Connected to Node " + j);
-                        arr[i] = count;
                     }
                 }
                 i++;
