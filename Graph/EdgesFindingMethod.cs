@@ -28,7 +28,7 @@ static int DirectedGraphEdge(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (array[i, j] == array[j, i] && (array[i, j] == 1 && array[j, i] == 1))
+            if (array[i, j] == 1)
             {
                 count = count + 1;
             }
