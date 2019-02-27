@@ -15,11 +15,9 @@ namespace ConsoleApplication1
             int col = matrix.GetLength(1);
             double[,] result = new double[row, col];
             Console.WriteLine("Row = {0}, Col = {1}",  row, col);
-
+            
             pivotFinding(matrix, 0, row, col);
             Console.ReadKey();
-
-
         }
 
         static void pivotFinding(double [,] matrix, int nCol, int row, int col) 
